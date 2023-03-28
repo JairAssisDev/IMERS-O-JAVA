@@ -26,6 +26,9 @@ public class AppTest {
         //System.out.println(listaDeFilmes.get(0));
         for (Map<String,String>filme :listaDeFilmes){
             System.out.println(filme.get("title"));
+            System.out.println(filme.get("image"));
+            System.out.println(filme.get("imDbRating"));
+            System.out.println();
         }
 	}
 
