@@ -1,6 +1,8 @@
 package test;
 
 //import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -24,10 +26,18 @@ public class AppTest {
         var parser  = new JsonParser();
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
         //System.out.println(listaDeFilmes.get(0));
-        for (Map<String,String>filme :listaDeFilmes){
-            System.out.println(filme.get("title"));
-            System.out.println(filme.get("image"));
-            System.out.println(filme.get("imDbRating"));
+        var geradora = new GeradoraDeFigurinhas();
+        for (Map<String,String> filme : listaDeFilmes) {
+
+            String urlImagem = filme.get("image");
+            String titulo = filme.get("title");
+
+            InputStream inputStream = new URL(urlImagem).openStream();
+            String nomeArquivo = titulo + ".png";
+
+            geradora.cria(inputStream, nomeArquivo);
+
+            System.out.println(titulo);
             System.out.println();
         }
 	}
