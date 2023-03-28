@@ -12,7 +12,7 @@ import java.util.Map;
 public class AppTest {
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
+		
 		String url = "https://gist.githubusercontent.com/lucasfugisawa/cbb0d10ee3901bd0541468e431c629b3/raw/1fe1f3340dfe5b5876a209c0e8226d090f6aef10/Top250Movies.json";
 		URI endereco = URI.create(url);
         var client = HttpClient.newHttpClient();
