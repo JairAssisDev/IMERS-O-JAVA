@@ -15,25 +15,27 @@ public class AppTest {
 
 	public static void main(String[] args) throws Exception {
 		
-		String url = "https://gist.githubusercontent.com/lucasfugisawa/cbb0d10ee3901bd0541468e431c629b3/raw/1fe1f3340dfe5b5876a209c0e8226d090f6aef10/Top250Movies.json";
+		String url = "https://api.nasa.gov/planetary/apod?api_key=mcktZ5KkYyHzgjXSbcY4mSfaaGuJ0F76AuRCjhA7&start_date=2023-03-10&end_date=2023-03-15";
 		URI endereco = URI.create(url);
         var client = HttpClient.newHttpClient();
         var request= HttpRequest.newBuilder(endereco).GET().build();
         HttpResponse<String> response = client.send(request,BodyHandlers.ofString());
         String body = response.body();
-
+        System.out.println(body);
         //extrair só os dados que interessam (titulo , poster,classificaçao)
         var parser  = new JsonParser();
-        List<Map<String, String>> listaDeFilmes = parser.parse(body);
+        List<Map<String, String>> listaDeConteudos = parser.parse(body);
         //System.out.println(listaDeFilmes.get(0));
         var geradora = new GeradoraDeFigurinhas();
-        for (Map<String,String> filme : listaDeFilmes) {
+        for (int i=0;i<5; i++) {
 
-            String urlImagem = filme.get("image");
-            String titulo = filme.get("title");
+            Map<String,String>filme = listaDeConteudos.get(i);
+            String urlImagem = filme.get("url")
+            .replaceAll("(@+)(.*).jpg$", "$1.jpg");
+            String titulo = filme.get("title").replace(":", "-");
 
             InputStream inputStream = new URL(urlImagem).openStream();
-            String nomeArquivo = titulo + ".png";
+            String nomeArquivo = "saida/"+titulo + ".png";
 
             geradora.cria(inputStream, nomeArquivo);
 
