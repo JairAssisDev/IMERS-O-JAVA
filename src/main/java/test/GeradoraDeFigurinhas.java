@@ -33,12 +33,12 @@ public class GeradoraDeFigurinhas {
         graphics.drawImage(imagemOriginal, 0, 0, null);
 
         // configurar a fonte
-        var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 64);
+        var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 30);
         graphics.setColor(Color.YELLOW);
         graphics.setFont(fonte);
 
         // escrever uma frase na nova imagem
-        graphics.drawString("Figurinhas da Nasa Jair.java 😎", 0, novaAltura - 40);
+        graphics.drawString("Melhor linguagem 😎", 0, novaAltura - 30);
 
         // escrever a nova imagem em um arquivo
         ImageIO.write(novaImagem, "png", new File(nomeArquivo));
