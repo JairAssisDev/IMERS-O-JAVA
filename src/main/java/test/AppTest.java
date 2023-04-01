@@ -29,10 +29,10 @@ public class AppTest {
         var geradora = new GeradoraDeFigurinhas();
         for (int i=0;i<5; i++) {
 
-            Map<String,String>filme = listaDeConteudos.get(i);
-            String urlImagem = filme.get("url")
+            Map<String,String>conteudo = listaDeConteudos.get(i);
+            String urlImagem = conteudo.get("url")
             .replaceAll("(@+)(.*).jpg$", "$1.jpg");
-            String titulo = filme.get("title").replace(":", "-");
+            String titulo = conteudo.get("title").replace(":", "-");
 
             InputStream inputStream = new URL(urlImagem).openStream();
             String nomeArquivo = "saida/"+titulo + ".png";
