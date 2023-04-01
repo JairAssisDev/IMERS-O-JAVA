@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ExtratorDeConteudoDoIMDB {
-    public List<Conteudo> extraConteudos(String json){
+public class ExtratorDeConteudoDoIMDB implements ExtradorDeConteudo {
+    public List<Conteudo> extraiConteudos(String json){
         
         var parser  = new JsonParser();
         List<Map<String, String>> listaDeAtributos = parser.parse(json);

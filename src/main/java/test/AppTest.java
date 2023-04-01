@@ -13,7 +13,8 @@ public class AppTest {
         var http =new ClienteHttp();
         String json = http.buscarDados(url);
 
-        ExtratorDeConteudoNasa extrador = new ExtratorDeConteudoNasa();
+        ExtradorDeConteudo extrador = new ExtratorDeConteudoNasa();
+
         List<Conteudo>conteudos = extrador.extraiConteudos(json);
         
         var geradora = new GeradoraDeFigurinhas();

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ExtratorDeConteudoNasa {
+public class ExtratorDeConteudoNasa  implements ExtradorDeConteudo{
     public List<Conteudo> extraiConteudos(String json){
         
         var parser  = new JsonParser();
@@ -22,7 +22,7 @@ public class ExtratorDeConteudoNasa {
         }
         
         
-        return conteudos;
+        return conteudos;  
 
     }
 }
